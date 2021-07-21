@@ -114,3 +114,17 @@ print(next(knp1))
 test_findall(txt1)
 
 test_findkmp(txt1)
+
+
+findall1 = findall("winds", txt1)
+
+print(next(findall1))
+
+knp1 = KnuthMorrisPratt(txt1, "winds")
+
+print(knp1)
+print(next(knp1))
+
+test_findall(txt1)
+
+test_findkmp(txt1)
