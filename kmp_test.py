@@ -87,15 +87,15 @@ Winds and waves higher and visibilities lower in and near tstms.
 
 
 @timer
-def test_findall(txt1):
-    f = findall( "winds", txt1)
+def test_findall(txt1, pattern):
+    f = findall( pattern, txt1)
     pos = next(f)
     while ( pos > 0 ):
         print("pos: ", pos )
         pos = next(f)
         
 @timer 
-def test_findkmp(txt1):
+def test_findkmp(txt1, pattern):
     f = KnuthMorrisPratt( txt1, "winds")
     pos = next(f)
     while ( pos > 0 ):
@@ -111,9 +111,9 @@ knp1 = KnuthMorrisPratt(txt1, "advisory")
 print(knp1)
 print(next(knp1))
 
-test_findall(txt1)
+test_findall(txt1, "advisory" )
 
-test_findkmp(txt1)
+test_findkmp(txt1, "advisory" )
 
 
 findall1 = findall("winds", txt1)
@@ -125,6 +125,6 @@ knp1 = KnuthMorrisPratt(txt1, "winds")
 print(knp1)
 print(next(knp1))
 
-test_findall(txt1)
+test_findall(txt1, "winds" )
 
-test_findkmp(txt1)
+test_findkmp(txt1, "winds")
