@@ -1,6 +1,7 @@
 import functools
 import time
 
+
 def timer(func):
     @functools.wraps(func)
     def wrapper_timer(*args, **kwargs):
@@ -48,9 +49,141 @@ def KnuthMorrisPratt(text, pattern):
             yield startPos
     else:
         yield -1
-            
+
 
 txt1 = """ANZ535-292000-
+Tidal Potomac from Key Bridge to Indian Head-
+1038 AM EDT Tue Jun 29 2021
+
+REST OF TODAY
+SW winds 5 to 10 kt. Waves 1 ft.
+
+TONIGHT
+S winds 5 to 10 kt. Waves 1 ft.
+
+WED
+SW winds 5 to 10 kt. Waves 1 ft.
+
+WED NIGHT
+SW winds around 5 kt. Waves 1 ft. A chance of showers
+and tstms.
+
+THU
+SW winds around 5 kt. Waves 1 ft. Showers with a chance of
+tstms.
+
+THU NIGHT
+SW winds 5 kt. Waves less than 1 ft. Showers with tstms
+likely.
+
+FRI
+W winds around 5 kt. Waves 1 ft. Showers. A chance of tstms
+through the night, then a chance of showers after midnight.
+
+SAT
+N winds around 5 kt. Waves 1 ft. A chance of showers. 
+
+Winds and waves higher and visibilities lower in and near tstms.
+ANZ535-292000-
+Tidal Potomac from Key Bridge to Indian Head-
+1038 AM EDT Tue Jun 29 2021
+
+REST OF TODAY
+SW winds 5 to 10 kt. Waves 1 ft.
+
+TONIGHT
+S winds 5 to 10 kt. Waves 1 ft.
+
+WED
+SW winds 5 to 10 kt. Waves 1 ft.
+
+WED NIGHT
+SW winds around 5 kt. Waves 1 ft. A chance of showers
+and tstms.
+
+THU
+SW winds around 5 kt. Waves 1 ft. Showers with a chance of
+tstms.
+
+THU NIGHT
+SW winds 5 kt. Waves less than 1 ft. Showers with tstms
+likely.
+
+FRI
+W winds around 5 kt. Waves 1 ft. Showers. A chance of tstms
+through the night, then a chance of showers after midnight.
+
+SAT
+N winds around 5 kt. Waves 1 ft. A chance of showers. 
+
+Winds and waves higher and visibilities lower in and near tstms.
+ANZ535-292000-
+Tidal Potomac from Key Bridge to Indian Head-
+1038 AM EDT Tue Jun 29 2021
+
+REST OF TODAY
+SW winds 5 to 10 kt. Waves 1 ft.
+
+TONIGHT
+S winds 5 to 10 kt. Waves 1 ft.
+
+WED
+SW winds 5 to 10 kt. Waves 1 ft.
+
+WED NIGHT
+SW winds around 5 kt. Waves 1 ft. A chance of showers
+and tstms.
+
+THU
+SW winds around 5 kt. Waves 1 ft. Showers with a chance of
+tstms.
+
+THU NIGHT
+SW winds 5 kt. Waves less than 1 ft. Showers with tstms
+likely.
+
+FRI
+W winds around 5 kt. Waves 1 ft. Showers. A chance of tstms
+through the night, then a chance of showers after midnight.
+
+SAT
+N winds around 5 kt. Waves 1 ft. A chance of showers. 
+
+Winds and waves higher and visibilities lower in and near tstms.
+ANZ535-292000-
+Tidal Potomac from Key Bridge to Indian Head-
+1038 AM EDT Tue Jun 29 2021
+
+REST OF TODAY
+SW winds 5 to 10 kt. Waves 1 ft.
+
+TONIGHT
+S winds 5 to 10 kt. Waves 1 ft.
+
+WED
+SW winds 5 to 10 kt. Waves 1 ft.
+
+WED NIGHT
+SW winds around 5 kt. Waves 1 ft. A chance of showers
+and tstms.
+
+THU
+SW winds around 5 kt. Waves 1 ft. Showers with a chance of
+tstms.
+
+THU NIGHT
+SW winds 5 kt. Waves less than 1 ft. Showers with tstms
+likely.
+
+FRI
+W winds around 5 kt. Waves 1 ft. Showers. A chance of tstms
+through the night, then a chance of showers after midnight.
+
+SAT
+N winds around 5 kt. Waves 1 ft. A chance of showers. 
+
+Winds and waves higher and visibilities lower in and near tstms.
+ANZ535-292000-
 Tidal Potomac from Key Bridge to Indian Head-
 1038 AM EDT Tue Jun 29 2021
 
@@ -88,20 +221,22 @@ Winds and waves higher and visibilities lower in and near tstms.
 
 @timer
 def test_findall(txt1, pattern):
-    f = findall( pattern, txt1)
+    f = findall(pattern, txt1)
     pos = next(f)
-    while ( pos > 0 ):
-        print("pos: ", pos )
+    while (pos > 0):
+        print("pos: ", pos)
         pos = next(f)
-        
-@timer 
+
+
+@timer
 def test_findkmp(txt1, pattern):
-    f = KnuthMorrisPratt( txt1, "winds")
+    f = KnuthMorrisPratt(txt1, "winds")
     pos = next(f)
-    while ( pos > 0 ):
-        print("pos: ", pos )
-        pos = next(f) 
-        
+    while (pos > 0):
+        print("pos: ", pos)
+        pos = next(f)
+
+
 findall1 = findall("advisory", txt1)
 
 print(next(findall1))
@@ -111,9 +246,9 @@ knp1 = KnuthMorrisPratt(txt1, "advisory")
 print(knp1)
 print(next(knp1))
 
-test_findall(txt1, "advisory" )
+test_findall(txt1, "advisory")
 
-test_findkmp(txt1, "advisory" )
+test_findkmp(txt1, "advisory")
 
 
 findall1 = findall("winds", txt1)
@@ -125,6 +260,6 @@ knp1 = KnuthMorrisPratt(txt1, "winds")
 print(knp1)
 print(next(knp1))
 
-test_findall(txt1, "winds" )
+test_findall(txt1, "winds")
 
 test_findkmp(txt1, "winds")
