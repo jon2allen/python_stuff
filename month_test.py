@@ -21,6 +21,16 @@ def get_prior_month(month):
             i_month = i_month-1
         yield i_month
 
+def get_next_month_year(month, year):
+    i_month = month
+    i_year = year
+    while True:
+        if i_month == 12:
+            i_month = 1
+            i_year = i_year + 1
+        else:
+            i_month = i_month+1
+        yield (i_month, i_year )
 
 def month_current_and_prior(month, count=1):
     if month == 0:
@@ -79,3 +89,10 @@ print(month_current_and_prior(3))
 
 for m in month_lst:
     print(calendar.month_name[m])
+
+my_month = get_next_month_year( 3, 2020)
+
+for i in range( 1, 50):
+    y = next(my_month)
+    print(y)
+    print( "month {0}, year {1}: ".format(calendar.month_name[y[0]], y[1]))
